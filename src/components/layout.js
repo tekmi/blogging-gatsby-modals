@@ -11,8 +11,12 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
+import { SingleModal } from "./modal"
+import { useSingleModal } from "../contexts/SingleModalContext"
 
 const Layout = ({ children }) => {
+  const {show, toggle, content} = useSingleModal();
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -36,10 +40,11 @@ const Layout = ({ children }) => {
       >
         <main>{children}</main>
         <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          © {new Date().getFullYear()}, TekMi
         </footer>
+        <SingleModal isOpen={show} toggle={() => toggle()} unmountOnClose={false}>
+          {content}
+        </SingleModal>
       </div>
     </>
   )

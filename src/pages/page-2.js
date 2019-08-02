@@ -1,16 +1,41 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { Button, ModalBody, ModalFooter, ModalHeader } from "reactstrap"
+import { useSingleModal } from "../contexts/SingleModalContext"
 
-const SecondPage = () => (
-  <Layout>
-    <SEO title="Page two" />
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-  </Layout>
-)
+const SecondPage = () => {
+  const { toggle, close, setContent } = useSingleModal()
+
+  const toggleModalWithContent = (cont) => {
+    setContent(cont)
+    toggle()
+  }
+
+  return (
+    <>
+      <SEO title="Page two"/>
+      <Button color="danger" onClick={() => toggleModalWithContent(() => {
+        return (
+          <>
+            <ModalHeader>Modal title</ModalHeader>
+            <ModalBody>
+              Another Test Another Test Another Test Another Test Another Test
+              Another Test Another Test Another Test Another Test Another Test
+              Another Test Another Test
+            </ModalBody>
+            <ModalFooter>
+              <Button color="primary" onClick={() => close()}>Do Something</Button>{" "}
+              <Button color="secondary" onClick={() => close()}>Cancel</Button>
+            </ModalFooter>
+          </>
+        )
+      })}>Modal with Buttons</Button>
+      <br/>
+      <Link to="/">Go back to the homepage</Link>
+    </>
+  )
+}
 
 export default SecondPage
