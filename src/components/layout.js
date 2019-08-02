@@ -5,17 +5,17 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
 
-import Header from "./header"
-import "./layout.css"
-import { SingleModal } from "./modal"
-import { useSingleModal } from "../contexts/SingleModalContext"
+import Header from './header';
+import './layout.css';
+import { SingleModal } from './modal';
+import { useSingleModal } from '../contexts/SingleModalContext';
 
 const Layout = ({ children }) => {
-  const {show, toggle, content} = useSingleModal();
+  const { show, toggle, content } = useSingleModal();
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <>
@@ -39,19 +39,17 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, TekMi
-        </footer>
+        <footer>© {new Date().getFullYear()}, TekMi</footer>
         <SingleModal isOpen={show} toggle={() => toggle()} unmountOnClose={false}>
           {content}
         </SingleModal>
       </div>
     </>
-  )
-}
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;

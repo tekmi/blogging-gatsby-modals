@@ -7,16 +7,10 @@
 import React from 'react';
 import { SingleModalProvider } from './src/contexts/SingleModalContext';
 
-const wrapRootElement = ({ element }) => (
-  <SingleModalProvider>
-    {element}
-  </SingleModalProvider>
-);
+const wrapRootElement = ({ element }) => <SingleModalProvider>{element}</SingleModalProvider>;
 
 const onRenderBody = ({ setPostBodyComponents }) => {
-  setPostBodyComponents([
-    <div key="single-modal" id="single-modal" />,
-  ]);
+  setPostBodyComponents([<div key="single-modal" id="single-modal" />]);
 };
 
 export { wrapRootElement, onRenderBody };

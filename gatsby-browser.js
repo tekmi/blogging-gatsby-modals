@@ -4,18 +4,14 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-import React from "react"
-import Layout from "./src/components/layout"
-import { SingleModalProvider } from "./src/contexts/SingleModalContext"
+import React from 'react';
+import Layout from './src/components/layout';
+import { SingleModalProvider } from './src/contexts/SingleModalContext';
 
-const wrapRootElement = ({ element }) => (
-  <SingleModalProvider>
-    {element}
-  </SingleModalProvider>
-)
+const wrapRootElement = ({ element }) => <SingleModalProvider>{element}</SingleModalProvider>;
 
 const wrapPageElement = ({ element, props }) => {
-  return <Layout {...props}>{element}</Layout>
-}
+  return <Layout {...props}>{element}</Layout>;
+};
 
-export { wrapRootElement, wrapPageElement }
+export { wrapRootElement, wrapPageElement };

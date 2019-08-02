@@ -1,34 +1,32 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext } from 'react';
 
-const SingleModalContext = React.createContext()
+const SingleModalContext = React.createContext();
 
 const useSingleModal = () => {
-  const singleModalContext = useContext(SingleModalContext)
+  const singleModalContext = useContext(SingleModalContext);
 
   if (!singleModalContext) {
-    throw new Error("useSingleModal must be used inside the SingleModalProvider")
+    throw new Error('useSingleModal must be used inside the SingleModalProvider');
   }
 
-  return singleModalContext
-}
+  return singleModalContext;
+};
 
 const SingleModalProvider = (props) => {
-  const [showModal, setShowModal] = useState(false)
-  const [modalContent, setModalContent] = useState(null)
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
 
   const toggleModal = () => {
-    setShowModal(!showModal)
-  }
+    setShowModal(!showModal);
+  };
 
   const closeModal = () => {
     setShowModal(false);
-  }
+  };
 
   const setContent = (content) => {
-    setModalContent(
-      content()
-    )
-  }
+    setModalContent(content());
+  };
 
   const value = {
     show: showModal,
@@ -38,13 +36,7 @@ const SingleModalProvider = (props) => {
     content: modalContent,
   };
 
-  return <SingleModalContext.Provider
-    value={value}
-    {...props}
-  />
-}
+  return <SingleModalContext.Provider value={value} {...props} />;
+};
 
-export {
-  useSingleModal,
-  SingleModalProvider,
-}
+export { useSingleModal, SingleModalProvider };
