@@ -16,6 +16,7 @@ class SingleModal extends Modal {
     }
 
     if (this._element) {
+      this.manageFocusAfterClose();
       if (this.state.isOpen) {
         this.close();
       }

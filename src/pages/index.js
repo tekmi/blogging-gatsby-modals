@@ -2,9 +2,8 @@ import React from 'react';
 
 import SEO from '../components/seo';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { Button, ModalBody, ModalFooter, ModalHeader, ButtonGroup } from 'reactstrap';
 import { useSingleModal } from '../contexts/SingleModalContext';
-import ButtonGroup from 'reactstrap/es/ButtonGroup';
 import { Link } from 'gatsby';
 
 const IndexPage = () => {
